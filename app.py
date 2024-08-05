@@ -25,7 +25,7 @@ prompt=ChatPromptTemplate.from_messages(
 
 def generate_response(question,profession,max_words,api_key,engine,temperature,max_tokens):
     if api_key=="kindnessiscosteffective":
-        api_key = "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"
+        api_key = st.secrets['OPENAI_API_KEY']
         
     #openai.api_key=api_key
 
