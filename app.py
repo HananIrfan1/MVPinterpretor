@@ -18,7 +18,7 @@ load_dotenv()
 ## Prompt Template
 prompt=ChatPromptTemplate.from_messages(
     [
-        ("system","You are a {profession}. Please interpret the given statement from the perspective of a {profession} and generate text in the tone of a {profession}. The generated text should not exceed {max_words} words."),
+        ("system","You are a {profession}. Please interpret the given statement from the perspective of a {profession} and generate text in the tone of a {profession}. The generated text should be around {max_words} words."),
         ("user","Statement:{question}")
     ]
 )
@@ -51,7 +51,7 @@ api_key=st.sidebar.text_input("Enter your Secret Key:",type="password")
 engine=st.sidebar.selectbox("Select Open AI model",["gpt-4-turbo","gpt-4", "gpt-4o"])
 
 ## Adjust response parameter
-temperature=st.sidebar.slider("Temperature",min_value=0.0,max_value=1.0,value=0.1)
+temperature=st.sidebar.slider("Temperature",min_value=0.0,max_value=1.0,value=0.7)
 max_words = st.sidebar.slider("Max Words", min_value=50, max_value=300, value=150)
 
 profession = st.radio("I am a: ", ('HEOR modeler', 'Clinician', 'Health policy maker', 'Market access professional', 'Layman with no knowledge of HEOR'))
