@@ -45,7 +45,7 @@ st.title("Interpretor for HEOR")
 
 ## Sidebar for settings
 st.sidebar.title("Settings")
-api_key=st.sidebar.text_input("Enter your Open AI API Key:",type="password")
+api_key=st.sidebar.text_input("Enter your Secret Key:",type="password")
 
 ## Select the OpenAI model
 engine=st.sidebar.selectbox("Select Open AI model",["gpt-4-turbo","gpt-4", "gpt-4o"])
@@ -54,7 +54,7 @@ engine=st.sidebar.selectbox("Select Open AI model",["gpt-4-turbo","gpt-4", "gpt-
 temperature=st.sidebar.slider("Temperature",min_value=0.0,max_value=1.0,value=0.1)
 max_words = st.sidebar.slider("Max Words", min_value=50, max_value=300, value=150)
 
-profession = st.radio("I am a: ", ('HEOR modeler', 'Clinician', 'Health policy maker', 'Market access professional', 'Naive math guy'))
+profession = st.radio("I am a: ", ('HEOR modeler', 'Clinician', 'Health policy maker', 'Market access professional', 'Layman with no knowledge of HEOR'))
 
 ## MAin interface for user input
 st.write("Interpret this statement for me: ")
