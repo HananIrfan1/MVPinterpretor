@@ -6,6 +6,8 @@ from langchain_core.prompts import ChatPromptTemplate
 from langchain.callbacks import get_openai_callback
 import os
 
+from prompts import *
+
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -16,19 +18,38 @@ load_dotenv()
 # os.environ["LANGCHAIN_PROJECT"]="Simple Q&A Chatbot With OPENAI"
 
 ## Prompt Template
-prompt=ChatPromptTemplate.from_messages(
-    [
-        ("system","You are a {profession}. Please interpret the given statement from the perspective of a {profession} and generate text in the tone of a {profession}. The generated text should be around {max_words} words."),
-        ("user","Statement:{question}")
-    ]
-)
+# prompt=ChatPromptTemplate.from_messages(
+#     [
+#         ("system","You are a {profession}. Please interpret the given statement from the perspective of a {profession} and generate text in the tone of a {profession}. The generated text should be around {max_words} words."),
+#         ("user","Statement:{question}")
+#     ]
+# )
 
 def generate_response(question,profession,max_words,api_key,engine,temperature,max_tokens):
+    
     if api_key==st.secrets['EC']:
         api_key = st.secrets['OPENAI_API_KEY']
         
     #openai.api_key=api_key
 
+    if profession=='HEOR modeler':
+        system_prompt=HEOR_modeler
+    elif profession=='Clinician':
+        system_prompt=Clinician
+    elif profession=='Health policy maker':
+        system_prompt=Health_policy_maker
+    elif profession=='Market access professional':
+        system_prompt=Market_access_professional
+    else:
+        system_prompt=Layman
+    
+    prompt=ChatPromptTemplate.from_messages(
+    [
+        ("system", system_prompt)
+        ("user","Statement:{question}")
+    ]
+    )
+    
     llm=ChatOpenAI(model=engine,temperature=temperature,max_tokens=max_tokens, openai_api_key=api_key)
     output_parser=StrOutputParser()
     chain=prompt|llm|output_parser
@@ -78,5 +99,4 @@ if st.button("Generate"):
         st.warning("Please enter the OPENAI API Key in the sider bar")
     else:
         st.write("Please provide the user input")
-
 
