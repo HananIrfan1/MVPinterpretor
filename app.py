@@ -45,7 +45,7 @@ def generate_response(question,profession,max_words,api_key,engine,temperature,m
     
     prompt=ChatPromptTemplate.from_messages(
     [
-        ("system", system_prompt)
+        ("system", system_prompt),
         ("user","Statement:{question}")
     ]
     )
