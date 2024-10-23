@@ -99,9 +99,9 @@ if st.button("Generate"):
                                         temperature,
                                         max_tokens
                                         )
-        cleaned_response = response.replace("\n", " ").replace("  ", " ")
-        #st.write(response, cbl[0])
-        st.text_area("Response:", value=cleaned_response, height=200)
+        #cleaned_response = response.replace("\n", " ").replace("  ", " ")
+        st.write(response, cbl[0])
+        #st.text_area("Response:", value=cleaned_response, height=200)
 
     elif user_input:
         st.warning("Please enter the OPENAI API Key in the sider bar")
