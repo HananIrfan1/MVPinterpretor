@@ -27,10 +27,10 @@ load_dotenv()
 
 def generate_response(question,profession,max_words,api_key,engine,temperature,max_tokens):
     
-    if api_key==st.secrets['EC']:
-        api_key = st.secrets['OPENAI_API_KEY']
+    #if api_key==st.secrets['EC']:
+        #api_key = st.secrets['OPENAI_API_KEY']
         
-    openai.api_key=api_key
+    openai_api_key=api_key
 
     if profession=='HEOR modeler':
         system_prompt=HEOR_modeler
@@ -61,7 +61,7 @@ def generate_response(question,profession,max_words,api_key,engine,temperature,m
 
 ## #Title of the app
 st.title("Interpretor for HEOR")
-
+st.secrets.get("OPENAI_API_KEY")
 
 
 ## Sidebar for settings
