@@ -41,6 +41,8 @@ def generate_response(question,profession,max_words,api_key,engine,temperature,m
         system_prompt=Health_policy_maker
     elif profession=='Market access professional':
         system_prompt=Market_access_professional
+    elif profession=='Statistician':
+        system_prompt=Statistician
     else:
         system_prompt=Layman
     
@@ -82,7 +84,7 @@ engine=st.sidebar.selectbox("Select Open AI model",["gpt-4-turbo","gpt-4", "gpt-
 temperature=st.sidebar.slider("Temperature",min_value=0.0,max_value=1.0,value=0.7)
 max_words = st.sidebar.slider("Max Words", min_value=50, max_value=300, value=150)
 
-profession = st.radio("I am a: ", ('HEOR modeler', 'Clinician', 'Health policy maker', 'Market access professional', 'Layman with no knowledge of HEOR'))
+profession = st.radio("I am a: ", ('HEOR modeler', 'Clinician', 'Health policy maker', 'Market access professional', 'Statistician','Layman with no knowledge of HEOR'))
 
 ## MAin interface for user input
 st.write("Interpret this statement for me: ")
