@@ -30,7 +30,7 @@ def generate_response(question,profession,max_words,api_key,engine,temperature,m
     if api_key==st.secrets['EC']:
         api_key = st.secrets['OPENAI_API_KEY']
         
-    #openai.api_key=api_key
+    openai.api_key=api_key
 
     if profession=='HEOR modeler':
         system_prompt=HEOR_modeler
