@@ -30,7 +30,7 @@ def generate_response(question,profession,max_words,api_key,engine,temperature,m
     #if api_key==st.secrets['EC']:
         #api_key = st.secrets['OPENAI_API_KEY']
         
-    api_key='OPENAI_API_KEY'
+    openai.api_key='OPENAI_API_KEY'
 
     if profession=='HEOR modeler':
         system_prompt=HEOR_modeler
@@ -61,7 +61,8 @@ def generate_response(question,profession,max_words,api_key,engine,temperature,m
 
 ## #Title of the app
 st.title("Interpretor for HEOR")
-st.secrets.get("OPENAI_API_KEY")
+api_key = st.secrets.get("OPENAI_API_KEY")
+
 if not api_key:
     api_key = st.sidebar.text_input("Enter your OpenAI API Key:", type="password")
     if not api_key:
