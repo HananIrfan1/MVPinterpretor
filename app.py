@@ -62,11 +62,16 @@ def generate_response(question,profession,max_words,api_key,engine,temperature,m
 ## #Title of the app
 st.title("Interpretor for HEOR")
 st.secrets.get("OPENAI_API_KEY")
+if not api_key:
+    api_key = st.sidebar.text_input("Enter your OpenAI API Key:", type="password")
+    if not api_key:
+        st.warning("Please enter the OpenAI API Key.")
+        st.stop() 
 
 
 ## Sidebar for settings
 st.sidebar.title("Settings")
-api_key=st.sidebar.text_input("Enter your Secret Key:",type="password")
+#api_key=st.sidebar.text_input("Enter your Secret Key:",type="password")
 
 ## Select the OpenAI model
 engine=st.sidebar.selectbox("Select Open AI model",["gpt-4-turbo","gpt-4", "gpt-4o"])
