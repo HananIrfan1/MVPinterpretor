@@ -20,7 +20,7 @@ load_dotenv()
 ## Prompt Template
 # prompt=ChatPromptTemplate.from_messages(
 #     [
-#         ("system","You are a {profession}. Please interpret the given statement from the perspective of a {profession} and generate text in the tone of a {profession}. The generated text should be around {max_words} words."),
+#         ("system","You are a {profession}, with the knowledge of HEOR as well. You will be given a statement from the domain of HEOR, you are supposed to interpret the statement for it to be understandable to poeple of your background but without the knowledge of HEOR.Please interpret the given statement from the perspective of a {profession} and generate text in the tone of a {profession}. Make sure to simplify all the HEOR jargon. Use examples from the background of the {profession} to explain the concepts if you need to.  The generated text should be around {max_words} words."),
 #         ("user","Statement:{question}")
 #     ]
 # )
